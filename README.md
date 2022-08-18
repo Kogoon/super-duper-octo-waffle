@@ -7,6 +7,19 @@ Final Project - kubernetes - Prometheus &amp; Grafana
  - 4 worker node?
 
 
+### Kustomization usage
+
+``` bash
+kubectl apply -k <kustomization_directory>
+```
+
+
+### METRIC SERVER
+
+``` bash
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.6.1/components.yaml
+```
+
 
 ### EKSCTL 
 
@@ -33,3 +46,4 @@ $ eksctl create nodegroup \
 ``` bash
 $ eksctl delete cluster EKS-CLUSTER --region ap-northeast-2
 ```
+
