@@ -2,11 +2,6 @@
 Final Project - kubernetes - Prometheus &amp; Grafana
 
 
-### memo
-
- - 4 worker node?
-
-
 ### Kustomization usage
 
 ``` bash
@@ -25,7 +20,8 @@ kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/down
 
 * Create Cluster
 ``` bash 
-$ eksctl create cluster --name EKS-CLUSTER --region ap-northeast-2 --version 1.21 --vpc-public-subnets subnet-0e9e29515e373ce74,subnet-089ed26e00e4bb312 --without-nodegroup
+$ eksctl create cluster --name EKS-CLUSTER --region ap-northeast-2 --version 1.21 --vpc-public-subnets subnet-05ad9b35153354dbc,subnet-0ab239ec58982fb8c --without-nodegroup
+$ eksctl create cluster --name EKS-CLUSTER --region ap-northeast-2 --version 1.21 --without-nodegroup
 ```
 
 * Create NodeGroup
@@ -34,12 +30,26 @@ $ eksctl create nodegroup \
   --cluster EKS-CLUSTER \
   --region ap-northeast-2 \
   --name NODEGROUP \
-  --node-type t2.micro \
-  --nodes 4 \
-  --nodes-min 4 \
-  --nodes-max 8 \
+  --node-type t3.small \
+  --nodes 2 \
+  --nodes-min 2 \
+  --nodes-max 4 \
   --ssh-access \
-  --ssh-public-key my-key
+  --ssh-public-key my-key \
+  --managed
+```
+
+* Create Cluster & NodeGroup
+```bash
+$ eksctl create cluster --name MY-EKS-CLUSTER --version 1.21 --region ap-northeast-2 --nodegroup-name MY-NODEGROUP --node-type t3.small --nodes 2 --nodes-min 2 --nodes-max 4 --ssh-access --ssh-public-key my-key --managed
+```
+
+* `--managed`   : 
+* `--unmanaged` : 
+
+* Delete NodeGroup
+``` bash
+eksctl delete nodegroup --cluster=clusterName --name=nodegroupName
 ```
 
 * Delete Cluster 
@@ -47,3 +57,12 @@ $ eksctl create nodegroup \
 $ eksctl delete cluster EKS-CLUSTER --region ap-northeast-2
 ```
 
+### Maximum number of pods (cpu/memory)
+* t2.micro  = 4  (1/1)    $ 0.0144/h
+* t3.micro  = 4  (2/1)    $ 0.0130/h
+* t2.small  = 11 (1/2)    $ 0.0288/h
+* t3.small  = 11 (2/2)    $ 0.0260/h -> 2022-08-24 실습 채택 -> Eviction
+* t3.medium = 17 (2/4)    $ 0.0520/h -> 2022-08-24 실습 채택2
+* t3.large  = 35 (2/8)    $ 0.1040/h
+* c4.large  = 29 (2/3.75) $ 0.1140/h 
+* c4.xlarge = 58 (4/7.5)  $ 0.2270/h
