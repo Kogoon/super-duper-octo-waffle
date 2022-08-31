@@ -14,7 +14,6 @@ spec:
       labels:
         app: kibana
     spec:
-      nodeName: ip-192-168-41-193.ap-northeast-2.compute.internal
       containers:
       - name: kibana
         image: elastic/kibana:8.4.0

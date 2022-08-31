@@ -78,3 +78,9 @@ kubectl exec -i -t my-pod --container main-app -- /bin/bash
 ```
 echo "Hello" > /usr/share/nginx/html/index.html
 ```
+
+
+## K8S env
+``` bash
+kubectl exec my-nginx-3800858182-e9ihh -- printenv | grep SERVICE
+```

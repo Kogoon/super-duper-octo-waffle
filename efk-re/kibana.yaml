@@ -14,10 +14,9 @@ spec:
       labels:
         app: kibana
     spec:
-      nodeName: ip-192-168-41-193.ap-northeast-2.compute.internal
       containers:
       - name: kibana
-        image: elastic/kibana:6.8.23
+        image: kibana:7.17.6
         env:
         - name: SERVER_NAME
           value: "kibana.kubenetes.example.com"
