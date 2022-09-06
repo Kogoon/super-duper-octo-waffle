@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    app.kubernetes.io/name: apmserver
+  name: apmserver-config
+data:
+  apm-server.yml: |-
+    apm-server:
+      host: "0.0.0.0:8200"
+    output.elasticsearch:
+      hosts: [ "http://elasticsearch-master:9200" ]
+      index: "apm-%{[observer.version]}-%{[processor.event]}"

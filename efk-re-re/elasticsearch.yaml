@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: elasticsearch
-        image: elastic/elasticsearch:8.4.0
+        image: elastic/elasticsearch:8.3.0
         env:
         - name: discovery.type
           value: "single-node"
