@@ -10,14 +10,19 @@ helm install kibana elastic/kibana -f kibana-value.yaml -n logging
 ~~~
 
 ~~~
-fluent-bit-service-account.yaml
-fluent-bit-role.yaml
-fluent-bit-role-binding.yaml
-fluent-bit-configmap.yaml
-fluent-bit-ds.yaml
+kubectl create namespace logging
+kubectl apply -f fluent-bit-service-account.yaml
+kubectl apply -f fluent-bit-role.yaml
+kubectl apply -f fluent-bit-role-binding.yaml
+kubectl apply -f output/elasticsearch/fluent-bit-configmap.yaml
+kubectl apply -f output/elasticsearch/fluent-bit-ds.yaml
 ~~~
 
-### Version 
+### Key Encoding
+~~~
+echo -n 'AWS_ACCESS_KEY_ID값' | base64
+echo -n 'AWS_SECRET_ACCESS_KEY값' | base64
+~~~
 
 ### Update 
 

@@ -30,9 +30,19 @@ spec:
           - containerPort: 2020
         env:
         - name: FLUENT_ELASTICSEARCH_HOST
-          value: "elasticsearch-master"
+          value: "search-kogoon-cb3uzbqgho7fbwto5tzu5nz4wu.ap-northeast-2.es.amazonaws.com"
         - name: FLUENT_ELASTICSEARCH_PORT
-          value: "9200"
+          value: "443"
+        - name: AWS_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              name: secret-aws-credentials
+              key: AWS_ACCESS_KEY_ID
+        - name: AWS_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: secret-aws-credentials
+              key: AWS_SECRET_ACCESS_KEY
         volumeMounts:
         - name: varlog
           mountPath: /var/log
