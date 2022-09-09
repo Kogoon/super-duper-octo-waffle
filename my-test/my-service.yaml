@@ -8,6 +8,7 @@ spec:
   ports: 
   - port: 80
     protocol: TCP
+    targetPort: 80
   selector:
     run: my-app
-  type: LoadBalancer
+  type: NodePort

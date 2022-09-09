@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: my-app
-        image: public.ecr.aws/x6q8k2h4/my-registry:2274e66f90777b3e3f05b81d07a872679f5d3982
+        image: public.ecr.aws/x6q8k2h4/project-web:latest
         ports:
         - containerPort: 80
