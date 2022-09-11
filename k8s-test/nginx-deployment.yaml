@@ -1,19 +1,53 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-nginx
+  name: nginx
 spec:
   selector:
     matchLabels:
-      run: my-nginx
+      run: nginx
   replicas: 2
   template:
     metadata:
       labels:
-        run: my-nginx
+        run: nginx
     spec:
       containers:
-      - name: my-nginx
+      - name: nginx
         image: nginx
-        ports:
-        - containerPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app-1
+spec:
+  selector:
+    matchLabels:
+      run: my-app-1
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: my-app-1
+    spec:
+      containers:
+      - name: my-app-1
+        image: kogoon/hello-world:1.0
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app-2
+spec:
+  selector:
+    matchLabels:
+      run: my-app-2
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: my-app-2
+    spec:
+      containers:
+      - name: my-app-2
+        image: kogoon/testnginx:0.1

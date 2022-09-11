@@ -16,4 +16,4 @@ spec:
       - name: my-app
         image: public.ecr.aws/x6q8k2h4/project-web:latest
         ports:
-        - containerPort: 80
+        - containerPort: 5000

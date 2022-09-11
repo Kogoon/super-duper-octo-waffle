@@ -6,9 +6,9 @@ metadata:
     run: my-app
 spec:
   ports: 
-  - port: 80
+  - port: 5000
     protocol: TCP
-    targetPort: 80
+    targetPort: 5000
   selector:
     run: my-app
   type: NodePort
