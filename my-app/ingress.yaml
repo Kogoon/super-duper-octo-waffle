@@ -25,3 +25,10 @@ spec:
               name: brokurly-register
               port: 
                 number: 5001
+        - path: /user
+          pathType: Prefix
+          backend:
+            service:
+              name: brokurly-user
+              port: 
+                number: 5002

@@ -27,3 +27,18 @@ spec:
   selector:
     run: brokurly-register
   type: NodePort
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: brokurly-user
+  labels:
+    run: brokurly-user
+spec:
+  ports: 
+  - port: 5002
+    protocol: TCP
+    targetPort: 5002
+  selector:
+    run: brokurly-user
+  type: NodePort

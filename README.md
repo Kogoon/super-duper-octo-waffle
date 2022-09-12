@@ -1,6 +1,10 @@
 # super-duper-octo-waffle
 Final Project - kubernetes - Prometheus &amp; Grafana
 
+### max-pods-calculator
+~~~
+./max-pods-calculator.sh --instance-type <instance-type> --cni-version 1.11.3-eksbuild.1
+~~~
 
 ### Kustomization usage
 

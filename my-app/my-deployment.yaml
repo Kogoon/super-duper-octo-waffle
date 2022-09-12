@@ -34,6 +34,26 @@ spec:
     spec:
       containers:
       - name: brokurly-register
-        image: 709861978753.dkr.ecr.ap-northeast-2.amazonaws.com/brokurly-user:latest
+        image: 709861978753.dkr.ecr.ap-northeast-2.amazonaws.com/brokurly-register:latest
         ports:
         - containerPort: 5001
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: brokurly-user
+spec:
+  selector:
+    matchLabels:
+      run: brokurly-user
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: brokurly-user
+    spec:
+      containers:
+      - name: brokurly-user
+        image: 709861978753.dkr.ecr.ap-northeast-2.amazonaws.com/brokurly-user:latest
+        ports:
+        - containerPort: 5002
