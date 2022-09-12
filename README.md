@@ -41,7 +41,7 @@ $ eksctl create nodegroup \
 
 * Create Cluster & NodeGroup
 ```bash
-$ eksctl create cluster --name MY-EKS-CLUSTER-2 --version 1.21 --region ap-northeast-2 --nodegroup-name MY-NODEGROUP --node-type t3.medium --nodes 2 --nodes-min 2 --nodes-max 2 --ssh-access --ssh-public-key my-key --managed
+$ eksctl create cluster --name MY-EKS-CLUSTER --version 1.21 --region ap-northeast-2 --nodegroup-name MY-NODEGROUP --node-type t3.medium --nodes 2 --nodes-min 2 --nodes-max 2 --ssh-access --ssh-public-key my-key --managed
 ```
 
 * `--managed`   : 
@@ -49,12 +49,12 @@ $ eksctl create cluster --name MY-EKS-CLUSTER-2 --version 1.21 --region ap-north
 
 * Delete NodeGroup
 ``` bash
-eksctl delete nodegroup --cluster=MY-EKS-CLUSTER-2 --name=MY-NODEGROUP
+eksctl delete nodegroup --cluster=MY-EKS-CLUSTER --name=MY-NODEGROUP
 ```
 
 * Delete Cluster 
 ``` bash
-$ eksctl delete cluster MY-EKS-CLUSTER-2 --region ap-northeast-2
+$ eksctl delete cluster MY-EKS-CLUSTER --region ap-northeast-2
 ```
 
 ### Maximum number of pods (cpu/memory)

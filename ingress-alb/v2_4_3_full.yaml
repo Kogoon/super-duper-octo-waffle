@@ -728,9 +728,9 @@ spec:
     spec:
       containers:
       - args:
-        - --cluster-name=MY-EKS-CLUSTER-2
+        - --cluster-name=MY-EKS-CLUSTER
         - --ingress-class=alb
-        - --aws-vpc-id=vpc-0f22eb074a447ec0e
+        - --aws-vpc-id=vpc-089381b91db26b6fe
         - --aws-region=ap-northeast-2
         image: amazon/aws-alb-ingress-controller:v2.4.3
         livenessProbe:
