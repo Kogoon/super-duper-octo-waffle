@@ -25,6 +25,11 @@ kubectl apply -k <kustomization_directory>
 kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.6.1/components.yaml
 ```
 
+### eks udpate 
+~~~
+aws eks update-kubeconfig --region ap-northeast-2 --name brokurly-eks-cluster
+~~~
+
 
 ### EKSCTL 
 

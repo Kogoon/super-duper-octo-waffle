@@ -26,7 +26,7 @@ echo -n 'AWS_SECRET_ACCESS_KEY값' | base64
 
 ### OIDC 공급자
 ~~~
-eksctl utils associate-iam-oidc-provider --cluster MY-EKS-CLUSTER --approve
+eksctl utils associate-iam-oidc-provider --cluster brokurly-eks-cluster --approve
 ~~~
 
 ### Policy
@@ -40,7 +40,7 @@ aws iam create-policy --policy-name AWSLoadBalancerControllerIAMPolicy --policy-
 ### iamserviceaccount
 ~~~
 eksctl create iamserviceaccount \
- --cluster=MY-EKS-CLUSTER \
+ --cluster=brokurly-eks-cluster \
  --namespace=kube-system \
  --name=aws-load-balancer-controller \
  --attach-policy-arn=arn:aws:iam::709861978753:policy/AWSLoadBalancerControllerIAMPolicy \
