@@ -2,6 +2,12 @@
 Final Project - kubernetes - Prometheus &amp; Grafana
 
 ### max-pods-calculator
+* Download
+~~~
+curl -o max-pods-calculator.sh https://raw.githubusercontent.com/awslabs/amazon-eks-ami/master/files/max-pods-calculator.sh
+~~~
+
+* usage
 ~~~
 ./max-pods-calculator.sh --instance-type <instance-type> --cni-version 1.11.3-eksbuild.1
 ~~~
@@ -67,9 +73,10 @@ $ eksctl delete cluster MY-EKS-CLUSTER --region ap-northeast-2
 * t2.small  = 11 (1/2)    $ 0.0288/h
 * t3.small  = 11 (2/2)    $ 0.0260/h -> 2022-08-24 실습 채택 -> Eviction
 * t3.medium = 17 (2/4)    $ 0.0520/h -> 2022-08-24 실습 채택2 -> 2022-08-24 성공 -> 2022-08-25 2개 도전
-* t3.large  = 35 (2/8)    $ 0.1040/h
+* t3.large  = 35 (2/8)    $ 0.1040/h 5g
 * c4.large  = 29 (2/3.75) $ 0.1140/h 
 * c4.xlarge = 58 (4/7.5)  $ 0.2270/h
+* m5.large  = 29 (2/8)    $ 0.1180/h 10g
 
 
 ## docker's exec
