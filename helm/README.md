@@ -1,5 +1,28 @@
 ## Helm
 
+~~~
+ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
+~~~
+
+~~~
+git clone git@github.com:elastic/helm-charts.git
+helm install elasticsearch ./helm-charts/elasticsearch --set imageTag=8.4.1
+helm install kibana ./helm-charts/kibana --set imageTag=8.4.1
+helm install apm-server ./helm-charts/apm-server --set imageTag=8.4.1
+~~~
+
+~~~
+helm repo add fluent https://fluent.github.io/helm-charts
+helm repo update
+helm install fluentd fluent/fluentd
+~~~
+
+~~~
+helm show values fluent/fluentds
+~~~
+
 ### Install 
 ~~~
 helm install elastic elastic/elasticsearch -f es-value.yaml -n logging

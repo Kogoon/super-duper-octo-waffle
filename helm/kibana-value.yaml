@@ -175,5 +175,5 @@ lifecycle:
   #     command: ["/bin/sh", "-c", "echo Hello from the postStart handler > /usr/share/message"]
 
 # Deprecated - use only with versions < 6.6
-elasticsearchURL: "" # "http://elasticsearch-master:9200"
+elasticsearchURL: "http://elasticsearch-master:9200" # "http://elasticsearch-master:9200"
 
