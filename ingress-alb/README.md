@@ -29,6 +29,11 @@ echo -n 'AWS_SECRET_ACCESS_KEY값' | base64
 eksctl utils associate-iam-oidc-provider --cluster brokurly-eks-cluster --approve
 ~~~
 
+~~~
+eksctl utils associate-iam-oidc-provider --cluster MY-EKS-CLUSTER --approve
+~~~
+
+
 ### Policy
 ~~~
 curl -o iam_policy.json https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.3.1/docs/install/iam_policy.json
@@ -48,13 +53,23 @@ eksctl create iamserviceaccount \
  --approve
 ~~~
 
+~~~
+eksctl create iamserviceaccount \
+ --cluster=MY-EKS-CLUSTER \
+ --namespace=kube-system \
+ --name=aws-load-balancer-controller \
+ --attach-policy-arn=arn:aws:iam::709861978753:policy/AWSLoadBalancerControllerIAMPolicy \
+ --override-existing-serviceaccounts \
+ --approve
+~~~
+
 ### Cert Manager
 ~~~
 kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v1.9.1/cert-manager.yaml
 ~~~
 
 ~~~
-kubernetes.io/cluster/MY-EKS-CLUSTER-2 = shared 
+kubernetes.io/cluster/MY-EKS-CLUSTER = shared 
 kubernetes.io/role/internal-elb = 1 # internal
 kubernetes.io/role/elb = 1  # internet-facing
 ~~~
@@ -73,6 +88,10 @@ wget https://github.com/kubernetes-sigs/aws-load-balancer-controller/releases/do
 
 ~~~
 kubectl apply -f v2_4_3_full.yaml
+~~~
+
+~~~
+kubectl apply -f v2_4_3_full_test.yaml
 ~~~
 
 ~~~
@@ -137,3 +156,23 @@ kubectl get deployment -n kube-system aws-load-balancer-controller
 ~~~
 $ helm delete ~
 ~~~
+
+
+
+### g
+~~~
+External-DNS-ROUTE53-ROLE
+~~~
+
+~~~
+eksctl create iamserviceaccount --name external-dns --namespace default --cluster MY-EKS-CLUSTER --attach-policy-arn arn:aws:iam::709861978753:policy/External-DNS-ROUTE53-ROLE --approve
+~~~
+
+~~~
+kubectl apply -f deployment_manifest.yaml
+~~~
+
+~~~
+kubectl apply -f ingress-https.yaml
+~~~
+

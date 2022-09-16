@@ -1,0 +1,139 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: brokurly-main
+spec:
+  selector:
+    matchLabels:
+      run: brokurly-main
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: brokurly-main
+    spec:
+      containers:
+      - name: brokurly-main
+        image: 709861978753.dkr.ecr.ap-northeast-2.amazonaws.com/brokurly-main:latest
+        ports:
+        - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: brokurly-main
+  labels:
+    run: brokurly-main
+spec:
+  ports: 
+  - port: 80
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    run: brokurly-main
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: brokurly-register
+spec:
+  selector:
+    matchLabels:
+      run: brokurly-register
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: brokurly-register
+    spec:
+      containers:
+      - name: brokurly-register
+        image: 709861978753.dkr.ecr.ap-northeast-2.amazonaws.com/brokurly-register:latest
+        ports:
+        - containerPort: 5001
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: brokurly-register
+  labels:
+    run: brokurly-register
+spec:
+  ports: 
+  - port: 5001
+    protocol: TCP
+    targetPort: 5001
+  selector:
+    run: brokurly-register
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: brokurly-user
+spec:
+  selector:
+    matchLabels:
+      run: brokurly-user
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: brokurly-user
+    spec:
+      containers:
+      - name: brokurly-user
+        image: 709861978753.dkr.ecr.ap-northeast-2.amazonaws.com/brokurly-user:latest
+        ports:
+        - containerPort: 5002
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: brokurly-user
+  labels:
+    run: brokurly-user
+spec:
+  ports: 
+  - port: 5002
+    protocol: TCP
+    targetPort: 5002
+  selector:
+    run: brokurly-user
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: brokurly-product
+spec:
+  selector:
+    matchLabels:
+      run: brokurly-product
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: brokurly-product
+    spec:
+      containers:
+      - name: brokurly-product
+        image: 709861978753.dkr.ecr.ap-northeast-2.amazonaws.com/brokurly-product:latest
+        ports:
+        - containerPort: 5003
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: brokurly-product
+  labels:
+    run: brokurly-product
+spec:
+  ports: 
+  - port: 5003
+    protocol: TCP
+    targetPort: 5003
+  selector:
+    run: brokurly-product
+  type: NodePort

@@ -15,20 +15,20 @@ spec:
           pathType: Prefix
           backend:
             service:
-              name: "nginx"
+              name: nginx
               port: 
-                number: 5000
-        - path: /product
+                number: 80
+        # - path: /product
+        #   pathType: Prefix
+        #   backend:
+        #     service:
+        #       name: "my-app-1"
+        #       port: 
+        #         number: 5001
+        - path: /register
           pathType: Prefix
           backend:
             service:
-              name: "my-app-1"
+              name: brokurly-register
               port: 
                 number: 5001
-        - path: /user
-          pathType: Prefix
-          backend:
-            service:
-              name: "my-app-2"
-              port: 
-                number: 5002
