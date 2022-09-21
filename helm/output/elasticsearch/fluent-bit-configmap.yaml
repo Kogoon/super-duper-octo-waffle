@@ -52,15 +52,9 @@ data:
         Match           *
         Host            ${FLUENT_ELASTICSEARCH_HOST}
         Port            ${FLUENT_ELASTICSEARCH_PORT}
-        Index           kubernetes-log 
-        AWS_Auth        On
-        AWS_Region      ap-northeast-2
-        aws_role_arn    arn:aws:iam::709861978753:user/efk-user
         Logstash_Format On
         Replace_Dots    On
         Retry_Limit     False
-        tls             On
-        tls.verify      off
 
   parsers.conf: |
     [PARSER]

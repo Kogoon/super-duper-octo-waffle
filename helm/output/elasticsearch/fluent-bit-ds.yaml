@@ -30,9 +30,9 @@ spec:
           - containerPort: 2020
         env:
         - name: FLUENT_ELASTICSEARCH_HOST
-          value: "search-kogoon-cb3uzbqgho7fbwto5tzu5nz4wu.ap-northeast-2.es.amazonaws.com"
+          value: "elasticsearch-master"
         - name: FLUENT_ELASTICSEARCH_PORT
-          value: "443"
+          value: "9200"
         # - name: AWS_ACCESS_KEY_ID
         #   valueFrom:
         #     secretKeyRef:

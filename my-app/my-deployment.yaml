@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       run: brokurly-main
-  replicas: 2
+  replicas: 3
   template:
     metadata:
       labels:
@@ -57,3 +57,23 @@ spec:
         image: 709861978753.dkr.ecr.ap-northeast-2.amazonaws.com/brokurly-user:latest
         ports:
         - containerPort: 5002
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: brokurly-product
+spec:
+  selector:
+    matchLabels:
+      run: brokurly-product
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: brokurly-product
+    spec:
+      containers:
+      - name: brokurly-product
+        image: 709861978753.dkr.ecr.ap-northeast-2.amazonaws.com/brokurly-product:latest
+        ports:
+        - containerPort: 5003

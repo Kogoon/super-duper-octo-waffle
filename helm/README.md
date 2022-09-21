@@ -1,7 +1,7 @@
 ## Helm
 
 ~~~
- curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 chmod 700 get_helm.sh
 ./get_helm.sh
 ~~~
@@ -11,6 +11,13 @@ git clone git@github.com:elastic/helm-charts.git
 helm install elasticsearch ./helm-charts/elasticsearch --set imageTag=8.4.1
 helm install kibana ./helm-charts/kibana --set imageTag=8.4.1
 helm install apm-server ./helm-charts/apm-server --set imageTag=8.4.1
+~~~
+
+~~~
+git clone git@github.com:elastic/helm-charts.git
+helm install elasticsearch ./helm-charts/elasticsearch --set imageTag=7.17.3 -n logging
+helm install kibana ./helm-charts/kibana --set imageTag=7.17.3 -n logging
+helm install apm-server ./helm-charts/apm-server --set imageTag=7.17.3 -n logging
 ~~~
 
 ~~~
