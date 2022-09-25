@@ -1,0 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+images:
+- name: 709861978753.dkr.ecr.ap-northeast-2.amazonaws.com/kosa_front_app
+  newName: 709861978753.dkr.ecr.ap-northeast-2.amazonaws.com/kosa_front_app
+  newTag: "50090822"
+- name: 904393113006.dkr.ecr.ap-northeast-2.amazonaws.com/kosa_front_app
+  newName: 904393113006.dkr.ecr.ap-northeast-2.amazonaws.com/kosa_front_app
+  newTag: 4308a24e
+resources:
+- ../../base
+patchesStrategicMerge:
+- frontend-rollout-patch.yaml
+- frontend-service-patch.yaml
